@@ -6,10 +6,11 @@ import { useState } from "react";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
+  product.variants = ["new", "used", "like new"];
   const [selectedVariant, setSelectedVariant] = useState(
-    product.variants?.[0] || null
+    product.variants?.[0] || "new"
   );
-  console.log("PRODUCT~", product);
+
   const addProduct = () => {
     dispatch(addCart({ ...product, selectedVariant }));
     toast.success("Added to cart");
